@@ -19,3 +19,4 @@ plt.show()
 
 
 # After customizing, display the plot
+s
