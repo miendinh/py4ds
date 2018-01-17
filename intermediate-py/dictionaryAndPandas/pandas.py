@@ -129,3 +129,84 @@ print(cars[['drives_right']])
 
 # Print out cars_per_cap and drives_right as DataFrame
 print(cars[['cars_per_cap', 'drives_right']])
+
+#################################################
+# Drivinv right(1)
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Extract drives_right column as Series: dr
+dr = cars['drives_right']
+
+# Use dr to subset cars: sel
+sel = cars[dr == True]
+
+# Print sel
+print(sel)
+
+#################################################
+# Driving right (2)
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Convert code to a one-liner
+sel = cars[cars['drives_right'] == True]
+
+# Print sel
+print(sel)
+
+
+#################################################
+# Cars per capita (1)
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Create car_maniac: observations that have a cars_per_cap over 500
+cpc = cars['cars_per_cap']
+many_cars = cpc > 500
+
+car_maniac = cars[many_cars]
+
+# Print car_maniac
+print(car_maniac)
+
+
+#################################################
+# Cars per capita (2)
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Create car_maniac: observations that have a cars_per_cap over 500
+cpc = cars['cars_per_cap']
+many_cars = cpc > 500
+
+car_maniac = cars[many_cars]
+
+# Print car_maniac
+print(car_maniac)
+
+#################################################
+from model import VietOcr
+from dataset import DataSet
+from generate_dataset import DataGenerator
+import tensorflow as tf
+import numpy as np
+
+
+def predict(character_image):
+    sess = tf.Session()
+    sess.run(tf.global_variables_initializer())
+    sess.run(tf.local_variables_initializer())
+    saver = tf.train.import_meta_graph('xxxxx.ckpt.meta')
+    saver.restore(sess, tf.train.latest_checkpoint('./'))
+
+    graph = tf.get_default_graph()
+
+    X = graph.get_tensor_by_name("X:0")
+    softmax = graph.get_tensor_by_name("softmax:0")
+
+    rs = sess.run([softmax], feed_dict={X: YOUR_INPUT})

@@ -68,7 +68,17 @@ print(np.logical_and(my_house < 11, your_house < 11))
 
 
 #############################
-#
+# Loop over Numpy array
+# Import numpy as np
+import numpy as np
+
+# For loop over np_height
+for x in np_height:
+    print(str(x) + ' inches')
+
+# For loop over np_baseball
+for x in np.nditer(np_baseball):
+    print(x)
 
 #############################
 #
